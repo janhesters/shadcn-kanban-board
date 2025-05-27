@@ -1,0 +1,93 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "homepage": "https://shadcn-kanban-board.com",
+  "items": [
+    {
+      "css": {
+        "@layer base": {
+          ":root": {
+            "--color-kanban-board-circle-blue": "var(--kanban-board-circle-blue)",
+            "--color-kanban-board-circle-cyan": "var(--kanban-board-circle-cyan)",
+            "--color-kanban-board-circle-gray": "var(--kanban-board-circle-gray)",
+            "--color-kanban-board-circle-green": "var(--kanban-board-circle-green)",
+            "--color-kanban-board-circle-indigo": "var(--kanban-board-circle-indigo)",
+            "--color-kanban-board-circle-pink": "var(--kanban-board-circle-pink)",
+            "--color-kanban-board-circle-primary": "var(--kanban-board-circle-primary)",
+            "--color-kanban-board-circle-purple": "var(--kanban-board-circle-purple)",
+            "--color-kanban-board-circle-red": "var(--kanban-board-circle-red)",
+            "--color-kanban-board-circle-violet": "var(--kanban-board-circle-violet)",
+            "--color-kanban-board-circle-yellow": "var(--kanban-board-circle-yellow)"
+          }
+        }
+      },
+      "cssVars": {
+        "dark": {
+          "kanban-board-circle-blue": "oklch(0.7135 0.1435 254.61)",
+          "kanban-board-circle-cyan": "oklch(0.7973 0.1339 211.45)",
+          "kanban-board-circle-gray": "oklch(0.7137 0.0192 261.33)",
+          "kanban-board-circle-green": "oklch(0.8003 0.1823 151.70)",
+          "kanban-board-circle-indigo": "oklch(0.6797 0.1586 276.96)",
+          "kanban-board-circle-pink": "oklch(0.7253 0.1752 349.74)",
+          "kanban-board-circle-purple": "oklch(0.7218 0.1766 305.51)",
+          "kanban-board-circle-red": "oklch(0.7108 0.1660 22.21)",
+          "kanban-board-circle-violet": "oklch(0.7093 0.1589 293.52)",
+          "kanban-board-circle-yellow": "oklch(0.8601 0.1730 91.84)"
+        },
+        "light": {
+          "kanban-board-circle-blue": "oklch(0.6232 0.1879 259.80)",
+          "kanban-board-circle-cyan": "oklch(0.7146 0.1256 215.13)",
+          "kanban-board-circle-gray": "oklch(0.5513 0.0233 264.36)",
+          "kanban-board-circle-green": "oklch(0.7229 0.1921 149.58)",
+          "kanban-board-circle-indigo": "oklch(0.5860 0.2037 277.12)",
+          "kanban-board-circle-pink": "oklch(0.6559 0.2117 354.34)",
+          "kanban-board-circle-purple": "oklch(0.6267 0.2325 303.86)",
+          "kanban-board-circle-red": "oklch(0.6368 0.2078 25.33)",
+          "kanban-board-circle-violet": "oklch(0.6059 0.2187 292.72)",
+          "kanban-board-circle-yellow": "oklch(0.7959 0.1618 86.05)"
+        },
+        "theme": {
+          "kanban-board-circle-primary": "var(--primary)"
+        }
+      },
+      "description": "A Kanban board component with customizable circle colors.",
+      "files": [
+        {
+          "path": "registry/new-york/ui/kanban.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "kanban",
+      "registryDependencies": [
+        "button",
+        "skeleton",
+        "textarea",
+        "tooltip"
+      ],
+      "title": "Kanban Board",
+      "type": "registry:component"
+    },
+    {
+      "description": "A React hook that returns `true` once client-side JS has loaded.",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-js-loaded.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-js-loaded",
+      "title": "useJsLoaded",
+      "type": "registry:hook"
+    },
+    {
+      "description": "Installs both the Kanban board and useJsLoaded hook in one go.",
+      "name": "kanban-suite",
+      "registryDependencies": [
+        "kanban",
+        "use-js-loaded"
+      ],
+      "title": "Kanban Suite",
+      "type": "registry:block"
+    }
+  ],
+  "name": "Shadcn Kanban Board"
+}

@@ -1,0 +1,206 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark {
+  /* support the .dark class */
+  &:where(.dark *, .dark) {
+    @slot;
+  }
+
+  /* support the .system class + prefers-color-scheme */
+  &:where(.system *, .system) {
+    @media (prefers-color-scheme: dark) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  --primary: oklch(0.439 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --radius: 0.625rem;
+  --header-height: calc(var(--spacing) * 12 + 1px);
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  --kanban-board-circle-primary: oklch(0.439 0 0);
+  --kanban-board-circle-gray:    oklch(0.5513 0.0233 264.36);
+  --kanban-board-circle-red:     oklch(0.6368 0.2078 25.33);
+  --kanban-board-circle-yellow:  oklch(0.7959 0.1618 86.05);
+  --kanban-board-circle-green:   oklch(0.7229 0.1921 149.58);
+  --kanban-board-circle-cyan:    oklch(0.7146 0.1256 215.13);
+  --kanban-board-circle-blue:    oklch(0.6232 0.1879 259.80);
+  --kanban-board-circle-indigo:  oklch(0.5860 0.2037 277.12);
+  --kanban-board-circle-violet:  oklch(0.6059 0.2187 292.72);
+  --kanban-board-circle-purple:  oklch(0.6267 0.2325 303.86);
+  --kanban-board-circle-pink:    oklch(0.6559 0.2117 354.34);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.556 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: oklch(0.371 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.439 0 0);
+
+  --kanban-board-circle-primary: oklch(0.556 0 0);
+  --kanban-board-circle-gray:    oklch(0.7137 0.0192 261.33);
+  --kanban-board-circle-red:     oklch(0.7108 0.1660 22.21);
+  --kanban-board-circle-yellow:  oklch(0.8601 0.1730 91.84);
+  --kanban-board-circle-green:   oklch(0.8003 0.1823 151.70);
+  --kanban-board-circle-cyan:    oklch(0.7973 0.1339 211.45);
+  --kanban-board-circle-blue:    oklch(0.7135 0.1435 254.61);
+  --kanban-board-circle-indigo:  oklch(0.6797 0.1586 276.96);
+  --kanban-board-circle-violet:  oklch(0.7093 0.1589 293.52);
+  --kanban-board-circle-purple:  oklch(0.7218 0.1766 305.51);
+  --kanban-board-circle-pink:    oklch(0.7253 0.1752 349.74);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-kanban-board-circle-primary: var(--kanban-board-circle-primary);
+  --color-kanban-board-circle-gray:    var(--kanban-board-circle-gray);
+  --color-kanban-board-circle-red:     var(--kanban-board-circle-red);
+  --color-kanban-board-circle-yellow:  var(--kanban-board-circle-yellow);
+  --color-kanban-board-circle-green:   var(--kanban-board-circle-green);
+  --color-kanban-board-circle-cyan:    var(--kanban-board-circle-cyan);
+  --color-kanban-board-circle-blue:    var(--kanban-board-circle-blue);
+  --color-kanban-board-circle-indigo:  var(--kanban-board-circle-indigo);
+  --color-kanban-board-circle-violet:  var(--kanban-board-circle-violet);
+  --color-kanban-board-circle-purple:  var(--kanban-board-circle-purple);
+  --color-kanban-board-circle-pink:    var(--kanban-board-circle-pink);
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to   { transform: translateY(calc(-100% - var(--gap))); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    @apply bg-background text-foreground;
+  }
+}

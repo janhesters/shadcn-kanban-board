@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-js-loaded",
+  "type": "registry:hook",
+  "title": "useJsLoaded",
+  "description": "A React hook that returns `true` once client-side JS has loaded.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/new-york/hooks/use-js-loaded.ts",
+      "content": "import { useState } from 'react';\nimport { useEffect } from 'react';\n\n/**\n * Hook to check if the JavaScript is loaded.\n *\n * @returns - True if the JavaScript is loaded, false otherwise.\n */\nexport function useJsLoaded() {\n  const [loaded, setLoaded] = useState(false);\n\n  useEffect(() => {\n    if (\n      document.readyState === 'complete' ||\n      document.readyState === 'interactive'\n    ) {\n      setLoaded(true);\n      return;\n    }\n\n    const onReady = () => setLoaded(true);\n    document.addEventListener('DOMContentLoaded', onReady);\n    window.addEventListener('load', onReady);\n\n    return () => {\n      document.removeEventListener('DOMContentLoaded', onReady);\n      window.removeEventListener('load', onReady);\n    };\n  }, []);\n\n  return loaded;\n}\n",
+      "type": "registry:hook"
+    }
+  ]
+}
