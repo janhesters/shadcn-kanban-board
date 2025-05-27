@@ -1,0 +1,19 @@
+.DS_Store
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
+
+*.env
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Random
+count-lines.sh
+stripe-events.txt

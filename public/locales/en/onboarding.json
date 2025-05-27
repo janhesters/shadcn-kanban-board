@@ -1,0 +1,37 @@
+{
+  "common": {
+    "onboarding": "Onboarding",
+    "onboarding-progress": "Onboarding progress"
+  },
+  "organization": {
+    "card-description": "You can invite other users to join your organization later through the organization settings.",
+    "card-title": "Create your organization",
+    "logo-label": "Logo",
+    "logo-must-be-string": "Logo must be a string.",
+    "logo-must-be-url": "Logo must be a valid URL.",
+    "name-max-length": "Your organization name must be at most 255 characters long.",
+    "name-min-length": "Your organization name must be at least 3 characters long.",
+    "name-must-be-string": "Your organization's name must be a string.",
+    "organization-name-description": "Please enter the name of your organization.",
+    "organization-name-label": "Organization name",
+    "organization-name-placeholder": "Your organization's name ...",
+    "save": "Save",
+    "saving": "Saving ...",
+    "title": "Organization"
+  },
+  "user-account": {
+    "avatar-label": "Avatar",
+    "avatar-must-be-url": "Avatar must be a valid URL.",
+    "card-description": "Welcome to the React Router SaaS template! Please create your user account to get started.",
+    "card-title": "Create your account",
+    "name-max-length": "Your name must be at most 128 characters long.",
+    "name-min-length": "Your name must be at least 2 characters long.",
+    "name-must-be-string": "Your public name must be a string.",
+    "save": "Save",
+    "saving": "Saving ...",
+    "title": "User account",
+    "user-name-description": "Please enter your full name for public display within your organization.",
+    "user-name-label": "Name",
+    "user-name-placeholder": "Your full name ..."
+  }
+}

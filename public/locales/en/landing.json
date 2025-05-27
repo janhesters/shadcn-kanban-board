@@ -1,0 +1,166 @@
+{
+  "cta": {
+    "buttons": {
+      "primary": "Get started",
+      "secondary": "Documentation"
+    },
+    "description": "Set up your project today and start building tomorrow. Save months on setup so you can focus on features.",
+    "title": "Launch your SaaS asap."
+  },
+  "description": {
+    "eyebrow": "Why use this template?",
+    "features": [
+      {
+        "description": "TypeScript, ESLint & Prettier, Commitlint and GitHub Actions are all wired up, so your team writes clean, consistent code from day one.",
+        "title": "Zero-config tooling."
+      },
+      {
+        "description": "Jumping into a template with tens of thousands of lines of code is scary. Complete unit, integration, component and E2E tests (Vitest, React Testing Library & Playwright) let you refactor without fear.",
+        "title": "Built with TDD."
+      },
+      {
+        "description": "See real-world patterns for image uploads (client vs. server), MSW-wrapped mocks on both client and server, factory functions and test helpers for easy testing, seamless dark-mode without flicker, Stripe payments integration, authentication, and more.",
+        "title": "Learn by example."
+      },
+      {
+        "description": "Everything's modular - strip out what you don't need, tweak folder structure, and capture new requirements with tests as you grow.",
+        "title": "Fully customizable."
+      }
+    ],
+    "image": {
+      "dark": "Product screenshot (dark)",
+      "light": "Product screenshot (light)"
+    },
+    "subtitle": "When you're launching a SaaS, your biggest advantage is speed. Use this production-ready foundation so you can skip months of setup and dive straight into shipping features.",
+    "title": "Focus on your PMF"
+  },
+  "faq": {
+    "items": [
+      {
+        "answer": "Yes! This is an open-source project and is free to use under the MIT license. However, some of the integrated services (for example Supabase, Stripe, hosting providers, etc.) may incur their own usage fees, which you are responsible for covering.",
+        "question": "Is this free?"
+      },
+      {
+        "answer": "No. This is an independent, community-maintained, open-source template. It is not sponsored by, affiliated with, or endorsed by Shopify Inc. \"React Router\" and its logos are trademarks of Shopify Inc., and this project makes no claim of official partnership or endorsement.",
+        "question": "Is this template officially supported by or endorsed by Shopify Inc.?"
+      },
+      {
+        "answer": "Glad you asked! We're always looking for help with the project. If you're interested in contributing, please check out our <1>contributing guide</1> for more information.",
+        "links": {
+          "contributing": "https://github.com/janhesters/react-router-saas-template/blob/main/CONTRIBUTING.md"
+        },
+        "question": "How do I contribute?"
+      },
+      {
+        "answer": "You can ask in GitHub discussions. If you're interested in professional help building your app from senior React developers, reach out to us at <1>ReactSquad</1>.",
+        "links": {
+          "reactsquad": "https://reactsquad.io"
+        },
+        "question": "I'm stuck! Where can I get help?"
+      },
+      {
+        "answer": "Thank you so much! You can follow Jan Hesters on <1>X</1>, <2>LinkedIn</2>, or <3>YouTube</3>, and drop a thank you. And if you know anyone who needs senior React developers, please recommend <4>ReactSquad</4>. Thank you!",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/jan-hesters/",
+          "reactsquad": "https://reactsquad.io",
+          "x": "https://x.com/janhesters",
+          "youtube": "https://www.youtube.com/@janhesters"
+        },
+        "question": "This is awesome! How can I support you?"
+      }
+    ],
+    "title": "Frequently asked questions"
+  },
+  "features": {
+    "cards": [
+      {
+        "description": "Every screen works on desktop, tablet and mobile. So you can serve all customers.",
+        "eyebrow": "TailwindCSS & Shadcn",
+        "image": {
+          "dark": "Mobile screenshot (dark)",
+          "light": "Mobile screenshot (light)"
+        },
+        "title": "Responsiveness & Accessibility"
+      },
+      {
+        "description": "Most SaaS apps charge some form of recurring subscription. This template comes with three tiers preconfigured. But even if your needs are different, this will give you a head start.",
+        "eyebrow": "Stripe",
+        "image": {
+          "dark": "Billing (dark)",
+          "light": "Billing (light)"
+        },
+        "title": "Billing"
+      },
+      {
+        "description": "With Supabase Auth (email magic links & Google OAuth), a managed Postgres database, and Supabase Storage, this template takes care of your backend. Storage even offers two upload flows: direct client uploads for large files and server-mediated uploads for small assets like profile avatars.",
+        "eyebrow": "Supabase",
+        "image": {
+          "dark": "Authentication (dark)",
+          "light": "Authentication (light)"
+        },
+        "title": "Authentication & Database"
+      },
+      {
+        "description": "This template includes a notifications system supporting text, mentions, and links, complete with read/unread tracking.",
+        "image": {
+          "dark": "Notifications (dark)",
+          "light": "Notifications (light)"
+        },
+        "title": "Notifications"
+      },
+      {
+        "description": "Built-in cookie-based dark mode prevents flicker on load and respects light, dark, or system settings out of the box.",
+        "title": "Dark Mode"
+      },
+      {
+        "description": "Add members via shareable invite links or email invites where you can assign roles - Owner, Admin, or Member - to control access and permissions.",
+        "eyebrow": "Multi-tenancy",
+        "title": "Member Management"
+      },
+      {
+        "description": "Manage translations, switch languages on the fly, and handle locale-specific formatting (dates, numbers, currencies) without any extra setup.",
+        "eyebrow": "React i18next",
+        "title": "Internationalization"
+      },
+      {
+        "description": "Includes user account settings, sending emails (with Resend), an onboarding flow, and a host of other utilities to help you hit the ground running.",
+        "eyebrow": "Miscellaneous",
+        "title": "And much more ..."
+      }
+    ],
+    "eyebrow": "Features",
+    "title": "Everything your SaaS needs"
+  },
+  "footer": {
+    "made-with-love": "Made with ❤️ by",
+    "reactsquad": "ReactSquad",
+    "social": {
+      "github": "Github",
+      "linkedin": "LinkedIn",
+      "twitter": "X formerly known as Twitter"
+    }
+  },
+  "header": {
+    "login": "Login",
+    "nav-links": {
+      "pricing": "Pricing"
+    },
+    "register": "Register"
+  },
+  "hero": {
+    "badge": "<1>NOT</1> an official template",
+    "cta": {
+      "primary": "Get Started",
+      "secondary": "Documentation"
+    },
+    "description": "Save your team months when building B2B & B2C SaaS applications with this <1>free</1> React Router community template.",
+    "image": {
+      "dark": "App screenshot (dark)",
+      "light": "App screenshot (light)"
+    },
+    "title": "SaaS Template"
+  },
+  "logos": {
+    "title": "The Stack Behind the Template"
+  }
+}
