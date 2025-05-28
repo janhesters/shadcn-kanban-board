@@ -1,9 +1,21 @@
-import { BookOpenIcon, SlidersIcon, TestTubeIcon, ZapIcon } from 'lucide-react';
+import {
+  AccessibilityIcon,
+  PackageIcon,
+  PaintbrushIcon,
+  PaletteIcon,
+  PlugIcon,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { cn } from '~/lib/utils';
 
-const featureIcons = [ZapIcon, TestTubeIcon, BookOpenIcon, SlidersIcon];
+const featureIcons = [
+  PackageIcon,
+  PaletteIcon,
+  AccessibilityIcon,
+  PaintbrushIcon,
+  PlugIcon,
+];
 
 const imageClassNames =
   'border-border w-3xl max-w-none rounded-xl border sm:w-228 md:-ml-4 lg:-ml-0';
@@ -57,7 +69,7 @@ export function Description() {
             alt={t('image.light')}
             className={cn(imageClassNames, 'dark:hidden')}
             height={1442}
-            src="/images/app-light-members.png"
+            src="/images/app-light.png"
             width={2432}
           />
 
@@ -65,7 +77,7 @@ export function Description() {
             alt={t('image.dark')}
             className={cn(imageClassNames, 'hidden dark:block')}
             height={1442}
-            src="/images/app-dark-members.png"
+            src="/images/app-dark.png"
             width={2432}
           />
         </div>

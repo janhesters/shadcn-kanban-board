@@ -63,38 +63,6 @@ jobs:
   vitest:
     name: ⚡ Vitest
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      POSTGRES_PRISMA_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      POSTGRES_URL_NON_POOLING: postgresql://postgres:postgres@localhost:5432/postgres
-      APP_URL: http://localhost:3000
-      SESSION_SECRET: a-sufficiently-long-secret-ideally-32-characters-or-more
-      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-      STORAGE_ACCESS_KEY_ID: ${{ secrets.STORAGE_ACCESS_KEY_ID }}
-      STORAGE_SECRET_ACCESS_KEY: ${{ secrets.STORAGE_SECRET_ACCESS_KEY }}
-      STORAGE_REGION: ${{ secrets.STORAGE_REGION }}
-      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
-      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-      HONEYPOT_SECRET: ${{ secrets.HONEYPOT_SECRET }}
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-      STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
-
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -107,47 +75,12 @@ jobs:
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
-      - name: 🛠 Setup Database
-        run: npm run prisma:wipe
-
       - name: ⚡ Run vitest
         run: npm run test -- --coverage
 
   playwright-chrome:
     name: 🎭 Playwright Chrome
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      POSTGRES_PRISMA_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      POSTGRES_URL_NON_POOLING: postgresql://postgres:postgres@localhost:5432/postgres
-      APP_URL: http://localhost:3000
-      SESSION_SECRET: a-sufficiently-long-secret-ideally-32-characters-or-more
-      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-      STORAGE_ACCESS_KEY_ID: ${{ secrets.STORAGE_ACCESS_KEY_ID }}
-      STORAGE_SECRET_ACCESS_KEY: ${{ secrets.STORAGE_SECRET_ACCESS_KEY }}
-      STORAGE_REGION: ${{ secrets.STORAGE_REGION }}
-      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
-      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-      HONEYPOT_SECRET: ${{ secrets.HONEYPOT_SECRET }}
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-      STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
-
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -162,9 +95,6 @@ jobs:
 
       - name: 🌐 Install Playwright Browsers
         run: npx playwright install --with-deps
-
-      - name: 🛠 Setup Database
-        run: npm run prisma:wipe
 
       - name: 🏗️ Build Application (with mocks)
         run: npm run build-with-mocks

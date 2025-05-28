@@ -1,28 +1,45 @@
+import type { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
+import { FaGithub, FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 
 import { Button } from '~/components/ui/button';
 import { Separator } from '~/components/ui/separator';
+import { cn } from '~/lib/utils';
 
 import { ThemeToggle } from '../color-scheme/theme-toggle';
 import { ReactsquadLogoIcon } from './svgs/reactsquad-logo-icon';
 
-export function Footer() {
+export function Footer({ className, ...props }: ComponentProps<'footer'>) {
   const { t } = useTranslation('landing', { keyPrefix: 'footer' });
 
   return (
-    <footer className="border-t">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-4 sm:flex-row md:h-(--header-height) md:py-0">
+    <footer
+      className={cn('border-t sm:h-[var(--header-height)]', className)}
+      {...props}
+    >
+      <div className="container mx-auto flex h-full flex-col items-center justify-between gap-4 px-4 py-4 sm:flex-row md:py-0">
         <div className="flex items-center gap-2">
           <Button
-            aria-label={t('social.github')}
+            aria-label={t('social.youtube')}
             asChild
             className="size-8"
             size="icon"
             variant="outline"
           >
-            <a href="https://github.com/janhesters/react-router-saas-template">
-              <FaGithub />
+            <a href="https://www.youtube.com/@janhesters">
+              <FaYoutube />
+            </a>
+          </Button>
+
+          <Button
+            aria-label={t('social.linkedin')}
+            asChild
+            className="size-8"
+            size="icon"
+            variant="outline"
+          >
+            <a href="https://www.linkedin.com/in/jan-hesters/">
+              <FaLinkedin />
             </a>
           </Button>
 
@@ -39,14 +56,14 @@ export function Footer() {
           </Button>
 
           <Button
-            aria-label={t('social.linkedin')}
+            aria-label={t('social.github')}
             asChild
             className="size-8"
             size="icon"
             variant="outline"
           >
-            <a href="https://www.linkedin.com/in/jan-hesters/">
-              <FaLinkedin />
+            <a href="https://github.com/janhesters">
+              <FaGithub />
             </a>
           </Button>
 

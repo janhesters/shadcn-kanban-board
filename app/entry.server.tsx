@@ -16,28 +16,6 @@ import i18next from '~/utils/i18next.server';
 
 export const streamTimeout = 5000;
 
-let mockServerInitialized = false;
-
-async function initializeMockServer() {
-  if (mockServerInitialized) {
-    return;
-  }
-
-  if (process.env.SERVER_MOCKS === 'true') {
-    const { supabaseHandlers } = await import('~/test/mocks/handlers/supabase');
-    const { resendHandlers } = await import('~/test/mocks/handlers/resend');
-    const { stripeHandlers } = await import('~/test/mocks/handlers/stripe');
-    const { startMockServer } = await import('~/test/mocks/server');
-    startMockServer([
-      ...supabaseHandlers,
-      ...resendHandlers,
-      ...stripeHandlers,
-    ]);
-  }
-
-  mockServerInitialized = true;
-}
-
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
@@ -45,8 +23,6 @@ export default async function handleRequest(
   routerContext: EntryContext,
   // loadContext: AppLoadContext,
 ) {
-  await initializeMockServer();
-
   const instance = createInstance();
   const lng = await i18next.getLocale(request);
   const ns = i18next.getRouteNamespaces(routerContext);

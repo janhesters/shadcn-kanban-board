@@ -1,11 +1,9 @@
-import { CTA } from './cta';
 import { Description } from './description';
 import { FAQ } from './faq';
-import { Features } from './features';
 import { Footer } from './footer';
 import { Header } from './header';
 import { Hero } from './hero';
-import { Logos } from './logos';
+import { InstallationInstructions } from './installation-instructions';
 
 export default function LandingPage() {
   return (
@@ -14,10 +12,8 @@ export default function LandingPage() {
 
       <main className="container mx-auto">
         <Hero />
-        <Logos />
+        <InstallationInstructions />
         <Description />
-        <Features />
-        <CTA />
         <FAQ />
       </main>
 

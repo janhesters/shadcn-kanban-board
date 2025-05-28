@@ -3,25 +3,11 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-// Custom plugin to handle .sudo files
-const sudoFilesPlugin = {
-  name: 'sudo-files',
-  transform(code: string, id: string) {
-    if (id.endsWith('.sudo')) {
-      return {
-        code: `export default ${JSON.stringify(code)}`,
-        map: undefined,
-      };
-    }
-  },
-};
-
 const rootConfig = defineConfig({
   plugins: [
     tailwindcss(),
     !process.env.VITEST && reactRouter(),
     tsconfigPaths(),
-    sudoFilesPlugin,
   ],
   resolve: {
     alias: {
@@ -38,15 +24,6 @@ const testConfig = defineConfig({
       {
         ...rootConfig,
         test: { include: ['app/**/*.test.ts'], name: 'unit-tests' },
-      },
-      {
-        ...rootConfig,
-        test: {
-          include: ['app/**/*.spec.ts'],
-          name: 'integration-tests',
-          globalSetup: 'app/test/vitest.global-setup.ts',
-          setupFiles: ['app/test/setup-server-test-environment.ts'],
-        },
       },
       {
         ...rootConfig,

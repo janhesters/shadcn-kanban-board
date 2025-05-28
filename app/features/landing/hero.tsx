@@ -1,4 +1,4 @@
-import { BookTextIcon } from 'lucide-react';
+import { BookTextIcon, SquareKanbanIcon } from 'lucide-react';
 import type { CSSProperties } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
@@ -6,9 +6,6 @@ import { Link } from 'react-router';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
-
-import { RRLockupDarkIcon } from './svgs/rr-lockup-dark-icon';
-import { RRLockupLightIcon } from './svgs/rr-lockup-light-icon';
 
 const imageClassNames = 'border-border rounded-xl border object-contain';
 const imageFadeStyle: CSSProperties = {
@@ -18,7 +15,6 @@ const imageFadeStyle: CSSProperties = {
 
 export function Hero() {
   const { t } = useTranslation('landing', { keyPrefix: 'hero' });
-  const { t: tCommon } = useTranslation('common');
 
   return (
     <section className="relative py-24 text-center sm:pt-32">
@@ -45,22 +41,12 @@ export function Hero() {
           />
         </Badge>
 
-        <h1 className="">
-          <>
-            <RRLockupLightIcon className="block px-2 dark:hidden" />
-            <RRLockupDarkIcon className="hidden px-2 dark:block" />
-          </>
-
-          <br />
-
-          <span
-            aria-hidden="true"
-            className="font-mono text-4xl font-semibold sm:text-7xl"
-          >
-            {t('title')}
+        <h1 className="flex flex-col items-center justify-center font-mono text-4xl font-semibold sm:text-7xl">
+          <span className="flex items-center text-center">
+            <SquareKanbanIcon className="mr-2 size-14 sm:size-26" /> Shadcn
           </span>
 
-          <span className="sr-only">{tCommon('app-name')}</span>
+          {t('title')}
         </h1>
 
         <p className="text-muted-foreground mt-8 text-lg sm:text-xl/8">
@@ -80,11 +66,11 @@ export function Hero() {
 
         <div className="mt-10 flex items-center justify-center gap-2">
           <Button asChild>
-            <Link to="/register">{t('cta.primary')}</Link>
+            <Link to="/example">{t('cta.primary')}</Link>
           </Button>
 
           <Button asChild className="text-foreground" variant="link">
-            <a href="https://github.com/janhesters/react-router-saas-template">
+            <a href="https://github.com/janhesters/shadcn-kanban-board/blob/main/README.md">
               {t('cta.secondary')}
               <BookTextIcon />
             </a>

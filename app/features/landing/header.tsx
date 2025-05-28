@@ -1,22 +1,31 @@
-import { GalleryVerticalEndIcon } from 'lucide-react';
+import { SquareKanbanIcon } from 'lucide-react';
+import type { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router';
+import { FaGithub } from 'react-icons/fa6';
+import { Link, NavLink } from 'react-router';
 
-import { Button } from '~/components/ui/button';
+import { Button, buttonVariants } from '~/components/ui/button';
+import { cn } from '~/lib/utils';
 
-export function Header() {
+export function Header({ className, ...props }: ComponentProps<'header'>) {
   const { t } = useTranslation('landing', { keyPrefix: 'header' });
   const { t: tCommon } = useTranslation('common');
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md">
+    <header
+      className={cn(
+        'fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md',
+        className,
+      )}
+      {...props}
+    >
       <div className="container mx-auto flex h-(--header-height) items-center justify-between gap-2 px-4">
         <Link
           className="flex items-center gap-2 self-center font-medium"
           to="/"
         >
           <div className="bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-md sm:size-6">
-            <GalleryVerticalEndIcon className="size-6 sm:size-4" />
+            <SquareKanbanIcon className="size-6 sm:size-4" />
           </div>
 
           <span className="hidden font-mono sm:block">
@@ -25,18 +34,25 @@ export function Header() {
         </Link>
 
         <nav className="flex gap-2 sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2">
-          <Button asChild size="sm" variant="ghost">
-            <Link to="/pricing">{t('nav-links.pricing')}</Link>
-          </Button>
+          <NavLink
+            className={({ isActive }) =>
+              cn(
+                buttonVariants({ size: 'sm', variant: 'ghost' }),
+                isActive && 'bg-accent text-primary',
+              )
+            }
+            to="/example"
+          >
+            {t('nav-links.example')}
+          </NavLink>
         </nav>
 
         <div className="flex gap-2">
           <Button asChild size="sm" variant="outline">
-            <Link to="/login">{t('login')}</Link>
-          </Button>
-
-          <Button asChild size="sm">
-            <Link to="/login">{t('register')}</Link>
+            <a href="https://github.com/janhesters/shadcn-kanban-board">
+              <FaGithub />
+              {t('github')}
+            </a>
           </Button>
         </div>
       </div>

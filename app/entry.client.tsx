@@ -9,27 +9,12 @@ import { getInitialNamespaces } from 'remix-i18next/client';
 
 import i18n from '~/utils/i18n';
 
-import { onUnhandledRequest } from './test/mocks/msw-utils';
-
 declare global {
   // eslint-disable-next-line no-var
   var __ENABLE_MSW__: boolean | undefined;
 }
 
-async function activateMsw() {
-  if (globalThis.__ENABLE_MSW__ === true) {
-    console.warn('MSW is activated');
-    const { worker } = await import('./test/mocks/browser');
-
-    return worker.start({ onUnhandledRequest });
-  }
-
-  return;
-}
-
 async function hydrate() {
-  await activateMsw();
-
   await i18next
     .use(initReactI18next)
     .use(LanguageDetector)

@@ -14,21 +14,16 @@ import {
 } from 'react-router';
 import { useRouteError } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { HoneypotProvider } from 'remix-utils/honeypot/react';
 import { promiseHash } from 'remix-utils/promise';
-import sonnerStyles from 'sonner/dist/styles.css?url';
 
 import i18next from '~/utils/i18next.server';
 
 import type { Route } from './+types/root';
 import { NotFound } from './components/not-found';
-import { Toaster } from './components/ui/sonner';
 import { getColorScheme } from './features/color-scheme/color-scheme.server';
 import { ColorSchemeScript } from './features/color-scheme/color-scheme-script';
 import { useColorScheme } from './features/color-scheme/use-color-scheme';
-import { useToast } from './hooks/use-toast';
-import { honeypot } from './utils/honeypot.server';
-import { getToast } from './utils/toast.server';
+import { cn } from './lib/utils';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -41,7 +36,6 @@ export const links: Route.LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
-  { rel: 'stylesheet', href: sonnerStyles },
 ];
 
 export const handle = { i18n: ['common', 'color-scheme'] };
@@ -63,26 +57,13 @@ export const shouldRevalidate = ({
 };
 
 export async function loader({ request }: Route.LoaderArgs) {
-  const { colorScheme, honeypotInputProps, locale, t, toastData } =
-    await promiseHash({
-      colorScheme: getColorScheme(request),
-      honeypotInputProps: honeypot.getInputProps(),
-      locale: i18next.getLocale(request),
-      t: i18next.getFixedT(request),
-      toastData: getToast(request),
-    });
+  const { colorScheme, locale, t } = await promiseHash({
+    colorScheme: getColorScheme(request),
+    locale: i18next.getLocale(request),
+    t: i18next.getFixedT(request),
+  });
   const title = t('app-name');
-  const { toast, headers: toastHeaders } = toastData;
-  return data(
-    {
-      colorScheme,
-      honeypotInputProps,
-      locale,
-      title,
-      toast,
-    },
-    { headers: toastHeaders },
-  );
+  return data({ colorScheme, locale, title });
 }
 
 export const meta: Route.MetaFunction = ({ data }) => [{ title: data?.title }];
@@ -99,11 +80,10 @@ export function Layout({
   const { i18n } = useTranslation();
 
   useChangeLanguage(locale);
-  useToast(data?.toast);
 
   return (
     <html
-      className={colorScheme}
+      className={cn(colorScheme, 'h-full')}
       lang={locale}
       dir={i18n.dir()}
       // When the user a.) has their system color scheme set to "dark", and b.)
@@ -124,12 +104,9 @@ export function Layout({
         )}
       </head>
 
-      <body className="min-h-svh">
-        <HoneypotProvider {...data?.honeypotInputProps}>
-          {children}
-        </HoneypotProvider>
+      <body className="h-full min-h-svh">
+        {children}
         <ScrollRestoration />
-        <Toaster position="bottom-right" />
         <Scripts />
       </body>
     </html>

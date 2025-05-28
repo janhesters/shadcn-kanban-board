@@ -16,7 +16,8 @@
     "paths": {
       "~/*": [
         "./app/*"
-      ]
+      ],
+      "@/*": ["./registry/*"]
     },
     "resolveJsonModule": true,
     "rootDirs": [
