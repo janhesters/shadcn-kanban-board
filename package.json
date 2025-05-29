@@ -84,7 +84,7 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.4"
   },
-  "name": "reactsquad-react-router-saas-template",
+  "name": "shadcn-kanban-board",
   "private": true,
   "scripts": {
     "build": "react-router build",

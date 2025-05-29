@@ -3,7 +3,6 @@ import { vercelPreset } from '@vercel/react-router/vite';
 
 export default {
   ssr: true,
-  prerender: true,
   future: {
     unstable_splitRouteModules: 'enforce',
   },

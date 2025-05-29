@@ -1,6 +1,6 @@
-# Contributing to the React Router SaaS Template
+# Contributing to the Shadcn Kanban Board
 
-Thank you for your interest in contributing to the React Router SaaS Template! This guide outlines the process, standards, and best practices for contributing to the project.
+Thank you for your interest in contributing to the Shadcn Kanban board! This guide outlines the process, standards, and best practices for contributing to the project.
 
 **Boy scout rule:** If you see something that can be improved, please improve it!
 
@@ -168,4 +168,4 @@ npm run test:e2e:ui # End-to-end
 * Comment complex logic
 * Keep functions small and focused (DOT principle)
 
-Thank you for helping improve the React Router SaaS Template! We look forward to your contributions.
+Thank you for helping improve the Shadcn Kanban board! We look forward to your contributions.
