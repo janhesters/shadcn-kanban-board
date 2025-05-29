@@ -5,6 +5,7 @@ import { createReadableStreamFromReadable } from '@react-router/node';
 import { createInstance } from 'i18next';
 import Backend from 'i18next-fs-backend';
 import { isbot } from 'isbot';
+import { createElement } from 'react';
 import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
@@ -21,7 +22,6 @@ export default async function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   routerContext: EntryContext,
-  // loadContext: AppLoadContext,
 ) {
   const instance = createInstance();
   const lng = await i18next.getLocale(request);
@@ -35,29 +35,31 @@ export default async function handleRequest(
       lng,
       ns,
       backend: {
-        loadPath: path.resolve('./public/locales/{{lng}}/{{ns}}.json'),
+        loadPath: process.env.VERCEL
+          ? path.resolve('build', 'client', './locales/{{lng}}/{{ns}}.json')
+          : path.resolve('./public/locales/{{lng}}/{{ns}}.json'),
       },
     });
 
-  return new Promise((resolve, reject) => {
-    let shellRendered = false;
-
-    const userAgent = request.headers.get('user-agent');
-
-    // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
-    // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
-    const readyOption: keyof RenderToPipeableStreamOptions =
-      (userAgent && isbot(userAgent)) || routerContext.isSpaMode
+  return new Promise<Response>((resolve, reject) => {
+    let didError = false;
+    const userAgent = request.headers.get('user-agent') ?? '';
+    const onAllReady =
+      isbot(userAgent) || routerContext.isSpaMode
         ? 'onAllReady'
         : 'onShellReady';
 
     const { pipe, abort } = renderToPipeableStream(
-      <I18nextProvider i18n={instance}>
-        <ServerRouter context={routerContext} url={request.url} />
-      </I18nextProvider>,
+      createElement(
+        I18nextProvider,
+        { i18n: instance },
+        createElement(ServerRouter, {
+          context: routerContext,
+          url: request.url,
+        }),
+      ),
       {
-        [readyOption]() {
-          shellRendered = true;
+        [onAllReady]() {
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
 
@@ -66,7 +68,7 @@ export default async function handleRequest(
           resolve(
             new Response(stream, {
               headers: responseHeaders,
-              status: responseStatusCode,
+              status: didError ? 500 : responseStatusCode,
             }),
           );
 
@@ -76,19 +78,13 @@ export default async function handleRequest(
           reject(error as Error);
         },
         onError(error: unknown) {
-          responseStatusCode = 500;
-          // Log streaming rendering errors from inside the shell.  Don't log
-          // errors encountered during initial shell rendering since they'll
-          // reject and get logged in handleDocumentRequest.
-          if (shellRendered) {
-            console.error(error);
-          }
+          didError = true;
+          console.error(error);
         },
-      },
+      } as RenderToPipeableStreamOptions,
     );
 
-    // Abort the rendering stream after the `streamTimeout` so it has time to
-    // flush down the rejected boundaries
+    // Ensure we don't hang forever
     setTimeout(abort, streamTimeout + 1000);
   });
 }
