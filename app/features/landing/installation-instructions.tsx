@@ -1,15 +1,10 @@
-import { useTranslation } from 'react-i18next';
-
 import { CodeBlockCommand } from '~/components/code-block-command';
 
 export function InstallationInstructions() {
-  const { t } = useTranslation('landing', {
-    keyPrefix: 'installation-instructions',
-  });
   return (
     <section className="mx-auto max-w-xl">
       <h2 className="text-primary mb-10 text-center text-3xl font-semibold">
-        {t('title')}
+        Installation
       </h2>
 
       <CodeBlockCommand

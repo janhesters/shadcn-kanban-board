@@ -125,7 +125,7 @@ export function MyKanbanBoard() {
           title: 'Edit a column title',
         },
         {
-          id: '7',
+          id: '8',
           title: `Check out
 
 multi line

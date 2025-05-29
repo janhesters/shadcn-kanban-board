@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Button } from '~/components/ui/button';
@@ -9,8 +8,6 @@ export type NotFoundProps = {
 };
 
 export function NotFound({ className }: NotFoundProps) {
-  const { t } = useTranslation('common');
-
   return (
     <main
       className={cn(
@@ -19,20 +16,18 @@ export function NotFound({ className }: NotFoundProps) {
       )}
     >
       <div className="text-center">
-        <p className="text-primary text-base font-semibold">
-          {t('not-found.status')}
-        </p>
+        <p className="text-primary text-base font-semibold">404</p>
 
         <h1 className="text-foreground mt-4 text-3xl font-bold tracking-tighter sm:text-5xl">
-          {t('not-found.title')}
+          Page Not Found
         </h1>
 
         <p className="text-muted-foreground mt-6 text-base">
-          {t('not-found.description')}
+          Sorry, we couldn't find the page you're looking for.
         </p>
 
         <Button asChild className="mt-10">
-          <Link to="/">{t('not-found.home-link')}</Link>
+          <Link to="/">Return Home</Link>
         </Button>
       </div>
     </main>

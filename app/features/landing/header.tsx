@@ -1,6 +1,5 @@
 import { SquareKanbanIcon } from 'lucide-react';
 import type { ComponentProps } from 'react';
-import { useTranslation } from 'react-i18next';
 import { FaGithub } from 'react-icons/fa6';
 import { Link, NavLink } from 'react-router';
 
@@ -8,9 +7,6 @@ import { Button, buttonVariants } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
 
 export function Header({ className, ...props }: ComponentProps<'header'>) {
-  const { t } = useTranslation('landing', { keyPrefix: 'header' });
-  const { t: tCommon } = useTranslation('common');
-
   return (
     <header
       className={cn(
@@ -28,9 +24,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
             <SquareKanbanIcon className="size-6 sm:size-4" />
           </div>
 
-          <span className="hidden font-mono sm:block">
-            {tCommon('app-name')}
-          </span>
+          <span className="hidden font-mono sm:block">Shadcn Kanban Board</span>
         </Link>
 
         <nav className="flex gap-2 sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2">
@@ -43,7 +37,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
             }
             to="/example"
           >
-            {t('nav-links.example')}
+            Example
           </NavLink>
         </nav>
 
@@ -51,7 +45,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
           <Button asChild size="sm" variant="outline">
             <a href="https://github.com/janhesters/shadcn-kanban-board">
               <FaGithub />
-              {t('github')}
+              Github
             </a>
           </Button>
         </div>

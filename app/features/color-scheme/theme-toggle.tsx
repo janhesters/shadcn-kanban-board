@@ -1,6 +1,5 @@
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react';
 import type { ComponentProps } from 'react';
-import { useTranslation } from 'react-i18next';
 import { TbBrightness } from 'react-icons/tb';
 import { Form } from 'react-router';
 
@@ -49,13 +48,11 @@ function ColorSchemeButton({
 }
 
 export function ThemeToggle() {
-  const { t } = useTranslation('color-scheme');
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          aria-label={t('dropdown-menu-button-label')}
+          aria-label="Open theme menu"
           className="size-8"
           size="icon"
           variant="outline"
@@ -65,9 +62,7 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" sideOffset={4}>
-        <DropdownMenuLabel className="sr-only">
-          {t('dropdown-menu-label')}
-        </DropdownMenuLabel>
+        <DropdownMenuLabel className="sr-only">Appearance</DropdownMenuLabel>
 
         <DropdownMenuSeparator className="sr-only" />
 
@@ -77,17 +72,17 @@ export function ThemeToggle() {
 
             <ColorSchemeButton value={colorSchemes.light}>
               <SunIcon />
-              {t('dropdown-menu-item-light')}
+              Light
             </ColorSchemeButton>
 
             <ColorSchemeButton value={colorSchemes.dark}>
               <MoonIcon />
-              {t('dropdown-menu-item-dark')}
+              Dark
             </ColorSchemeButton>
 
             <ColorSchemeButton value={colorSchemes.system}>
               <MonitorIcon />
-              {t('dropdown-menu-item-system')}
+              System
             </ColorSchemeButton>
           </Form>
         </DropdownMenuGroup>
