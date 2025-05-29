@@ -13,7 +13,9 @@ const i18next = new RemixI18Next({
   i18next: {
     ...i18n,
     backend: {
-      loadPath: path.resolve('./public/locales/{{lng}}/{{ns}}.json'),
+      loadPath: process.env.VERCEL
+        ? path.resolve('build', 'client', './locales/{{lng}}/{{ns}}.json')
+        : path.resolve('./public/locales/{{lng}}/{{ns}}.json'),
     },
   },
   plugins: [Backend],

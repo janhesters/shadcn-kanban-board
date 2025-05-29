@@ -17,3 +17,4 @@ node_modules/
 # Random
 count-lines.sh
 stripe-events.txt
+.vercel
