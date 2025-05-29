@@ -22,25 +22,29 @@ We needed a good Kanban board for our LinkedIn scheduling and employee advocacy 
 * `npm:`
 
   ```bash
-  npx shadcn@latest add https://shadcn-kanban-board.com/r/kanban-suite.json
+  npx shadcn@latest add https://shadcn-kanban-board.com/r/kanban.json
+  npx shadcn@latest add https://shadcn-kanban-board.com/r/use-js-loaded.json
   ```
 
 * `yarn:`
 
   ```bash
-  yarn dlx shadcn@latest add https://shadcn-kanban-board.com/r/kanban-suite.json
+  yarn dlx shadcn@latest add https://shadcn-kanban-board.com/r/kanban.json
+  yarn dlx shadcn@latest add https://shadcn-kanban-board.com/r/use-js-loaded.json
   ```
 
 * `pnpm:`
 
   ```bash
-  pnpm dlx shadcn@latest add https://shadcn-kanban-board.com/r/kanban-suite.json
+  pnpm dlx shadcn@latest add https://shadcn-kanban-board.com/r/kanban.json
+  pnpm dlx shadcn@latest add https://shadcn-kanban-board.com/r/use-js-loaded.json
   ```
 
 * `bun:`
 
   ```bash
-  bunx shadcn@latest add https://shadcn-kanban-board.com/r/kanban-suite.json
+  bunx shadcn@latest add https://shadcn-kanban-board.com/r/kanban.json
+  bunx shadcn@latest add https://shadcn-kanban-board.com/r/use-js-loaded.json
   ```
 
 ## Example

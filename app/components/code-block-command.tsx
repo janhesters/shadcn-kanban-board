@@ -51,7 +51,7 @@ export function CodeBlockCommand({
   }, [packageManager, tabs]);
 
   return (
-    <div className="bg-card dark:bg-card border-border relative mt-6 max-h-[650px] overflow-x-auto rounded-xl border">
+    <div className="bg-card dark:bg-card border-border relative max-h-[650px] overflow-x-auto rounded-xl border">
       <Tabs
         value={packageManager}
         onValueChange={value => {
