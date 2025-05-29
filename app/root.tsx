@@ -18,6 +18,7 @@ import { getColorScheme } from './features/color-scheme/color-scheme.server';
 import { ColorSchemeScript } from './features/color-scheme/color-scheme-script';
 import { useColorScheme } from './features/color-scheme/use-color-scheme';
 import { cn } from './lib/utils';
+import { getSocialsMeta } from './utils/get-socials-meta.server';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -51,10 +52,18 @@ export const shouldRevalidate = ({
 export async function loader({ request }: Route.LoaderArgs) {
   const colorScheme = await getColorScheme(request);
   const title = 'Shadcn Kanban Board';
-  return data({ colorScheme, title });
+  const meta = getSocialsMeta({
+    title,
+    description:
+      'A modern, production-ready Kanban board for building full-stack B2B & B2C SaaS applications using Shadcn/UI.',
+    url: 'https://shadcn-kanban-board.com',
+    keywords:
+      'shadcn, kanban, board, react, reactjs, shadcn/ui, typescript, scrum, agile, task management, flow, trello, jira, asana, notion',
+  });
+  return data({ colorScheme, title, meta });
 }
 
-export const meta: Route.MetaFunction = ({ data }) => [{ title: data?.title }];
+export const meta: Route.MetaFunction = ({ data }) => [...data.meta];
 
 export function Layout({
   children,
