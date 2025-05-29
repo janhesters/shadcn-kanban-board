@@ -1,6 +1,5 @@
 import { BookTextIcon, SquareKanbanIcon } from 'lucide-react';
 import type { CSSProperties } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 import { Badge } from '~/components/ui/badge';
@@ -14,8 +13,6 @@ const imageFadeStyle: CSSProperties = {
 };
 
 export function Hero() {
-  const { t } = useTranslation('landing', { keyPrefix: 'hero' });
-
   return (
     <section className="relative py-24 text-center sm:pt-32">
       <div
@@ -33,45 +30,34 @@ export function Hero() {
 
       <div className="mx-auto max-w-2xl px-4">
         <Badge className="mb-8" variant="secondary">
-          <Trans
-            i18nKey="landing:hero.badge"
-            components={{
-              1: <span className="underline" />,
-            }}
-          />
+          <span className="underline">Free</span> & Open Source
         </Badge>
 
         <h1 className="flex flex-col items-center justify-center font-mono text-4xl font-semibold sm:text-7xl">
           <span className="flex items-center text-center">
             <SquareKanbanIcon className="mr-2 size-14 sm:size-26" /> Shadcn
           </span>
-
-          {t('title')}
+          Kanban Board
         </h1>
 
         <p className="text-muted-foreground mt-8 text-lg sm:text-xl/8">
           <span className="relative">
-            <Trans
-              i18nKey="landing:hero.description"
-              components={{
-                1: (
-                  <span className="text-primary decoration-primary underline decoration-wavy underline-offset-4">
-                    free
-                  </span>
-                ),
-              }}
-            />
+            Kickstart your B2B & B2C SaaS apps with this{' '}
+            <span className="text-primary decoration-primary underline decoration-wavy underline-offset-4">
+              open-source
+            </span>{' '}
+            Shadcn Kanban Board built with React and Tailwind CSS.
           </span>
         </p>
 
         <div className="mt-10 flex items-center justify-center gap-2">
           <Button asChild>
-            <Link to="/example">{t('cta.primary')}</Link>
+            <Link to="/example">Try it out</Link>
           </Button>
 
           <Button asChild className="text-foreground" variant="link">
             <a href="https://github.com/janhesters/shadcn-kanban-board/blob/main/README.md">
-              {t('cta.secondary')}
+              Documentation
               <BookTextIcon />
             </a>
           </Button>
@@ -80,14 +66,14 @@ export function Hero() {
 
       <div className="mt-16 px-4">
         <img
-          alt={t('image.light')}
+          alt="App screenshot (light)"
           className={cn(imageClassNames, 'shadow-sm dark:hidden')}
           src="/images/app-light.png"
           style={imageFadeStyle}
         />
 
         <img
-          alt={t('image.dark')}
+          alt="App screenshot (dark)"
           className={cn(imageClassNames, 'hidden dark:block')}
           src="/images/app-dark.png"
           style={imageFadeStyle}

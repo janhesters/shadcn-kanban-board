@@ -1,6 +1,5 @@
 import './app.css';
 
-import { useTranslation } from 'react-i18next';
 import type { ShouldRevalidateFunctionArgs } from 'react-router';
 import {
   data,
@@ -10,13 +9,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from 'react-router';
 import { useRouteError } from 'react-router';
-import { useChangeLanguage } from 'remix-i18next/react';
-import { promiseHash } from 'remix-utils/promise';
-
-import i18next from '~/utils/i18next.server';
 
 import type { Route } from './+types/root';
 import { NotFound } from './components/not-found';
@@ -38,8 +32,6 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export const handle = { i18n: ['common', 'color-scheme'] };
-
 /**
  * By enabling single fetch, the loaders will no longer revalidate the data when the action status is in the 4xx range.
  * This behavior will prevent toasts from being displayed for failed actions.
@@ -57,13 +49,9 @@ export const shouldRevalidate = ({
 };
 
 export async function loader({ request }: Route.LoaderArgs) {
-  const { colorScheme, locale, t } = await promiseHash({
-    colorScheme: getColorScheme(request),
-    locale: i18next.getLocale(request),
-    t: i18next.getFixedT(request),
-  });
-  const title = t('app-name');
-  return data({ colorScheme, locale, title });
+  const colorScheme = await getColorScheme(request);
+  const title = 'Shadcn Kanban Board';
+  return data({ colorScheme, title });
 }
 
 export const meta: Route.MetaFunction = ({ data }) => [{ title: data?.title }];
@@ -71,21 +59,15 @@ export const meta: Route.MetaFunction = ({ data }) => [{ title: data?.title }];
 export function Layout({
   children,
 }: { children: React.ReactNode } & Route.ComponentProps) {
-  const data = useLoaderData<typeof loader>();
-  const locale = data?.locale ?? 'en';
   const error = useRouteError();
   const isErrorFromRoute = isRouteErrorResponse(error);
   const colorScheme = useColorScheme();
 
-  const { i18n } = useTranslation();
-
-  useChangeLanguage(locale);
-
   return (
     <html
       className={cn(colorScheme, 'h-full')}
-      lang={locale}
-      dir={i18n.dir()}
+      lang="en"
+      dir="ltr"
       // When the user a.) has their system color scheme set to "dark", and b.)
       // picks "system" in the theme toggle, the color scheme is undefined from
       // the root loader, but "dark" in the client. There won't be a flash

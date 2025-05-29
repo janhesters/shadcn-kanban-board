@@ -1,5 +1,4 @@
 import type { ComponentProps } from 'react';
-import { useTranslation } from 'react-i18next';
 import { FaGithub, FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 
 import { Button } from '~/components/ui/button';
@@ -10,8 +9,6 @@ import { ThemeToggle } from '../color-scheme/theme-toggle';
 import { ReactsquadLogoIcon } from './svgs/reactsquad-logo-icon';
 
 export function Footer({ className, ...props }: ComponentProps<'footer'>) {
-  const { t } = useTranslation('landing', { keyPrefix: 'footer' });
-
   return (
     <footer
       className={cn('border-t sm:h-[var(--header-height)]', className)}
@@ -20,7 +17,7 @@ export function Footer({ className, ...props }: ComponentProps<'footer'>) {
       <div className="container mx-auto flex h-full flex-col items-center justify-between gap-4 px-4 py-4 sm:flex-row md:py-0">
         <div className="flex items-center gap-2">
           <Button
-            aria-label={t('social.youtube')}
+            aria-label="YouTube"
             asChild
             className="size-8"
             size="icon"
@@ -32,7 +29,7 @@ export function Footer({ className, ...props }: ComponentProps<'footer'>) {
           </Button>
 
           <Button
-            aria-label={t('social.linkedin')}
+            aria-label="LinkedIn"
             asChild
             className="size-8"
             size="icon"
@@ -44,7 +41,7 @@ export function Footer({ className, ...props }: ComponentProps<'footer'>) {
           </Button>
 
           <Button
-            aria-label={t('social.twitter')}
+            aria-label="X (formerly known as Twitter)"
             asChild
             className="size-8"
             size="icon"
@@ -56,7 +53,7 @@ export function Footer({ className, ...props }: ComponentProps<'footer'>) {
           </Button>
 
           <Button
-            aria-label={t('social.github')}
+            aria-label="Github"
             asChild
             className="size-8"
             size="icon"
@@ -76,9 +73,9 @@ export function Footer({ className, ...props }: ComponentProps<'footer'>) {
 
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-2">
-            {t('made-with-love')}
+            Made with ❤️ by
             <a
-              aria-label={t('reactsquad')}
+              aria-label="ReactSquad"
               className="text-foreground h-6 w-auto"
               href="https://reactsquad.io"
             >
